@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Congratulations, Hilda! · Civil Engineer 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;500;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0b1f3f; --navy-2:#122c57; --navy-3:#1b3b72;
+  --gold:#d4a64a; --gold-2:#f0cf86; --white:#fff; --cream:#fbf8f1;
+  --ink:#1c2740;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.7;overflow-x:hidden}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;line-height:1.15}
+img{max-width:100%;display:block}
+.wrap{width:min(1120px,92%);margin-inline:auto}
+
+/* ---------- Song picker overlay ---------- */
+#intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:1.2rem;
+  background:radial-gradient(circle at 50% 20%,var(--navy-3),var(--navy) 70%);color:#fff;text-align:center;
+  transition:opacity .8s,visibility .8s}
+#intro.hide{opacity:0;visibility:hidden}
+#intro::before{content:"";position:absolute;inset:0;opacity:.18;
+  background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+  background-size:40px 40px;mask-image:radial-gradient(circle,#000 20%,transparent 75%)}
+.intro-card{position:relative;max-width:520px;width:100%}
+.intro-card .cap{width:72px;margin:0 auto 1rem;color:var(--gold)}
+.intro-card h2{font-size:clamp(1.8rem,5vw,2.4rem);margin-bottom:.4rem}
+.intro-card p{color:#c9d3ea;font-size:.95rem;margin-bottom:1.4rem}
+.songs{display:grid;gap:.7rem;margin-bottom:1.1rem}
+.song{display:flex;align-items:center;gap:.9rem;text-align:left;padding:.85rem 1.1rem;border-radius:14px;cursor:pointer;
+  background:rgba(255,255,255,.07);border:1px solid rgba(240,207,134,.35);color:#fff;font:inherit;transition:.25s}
+.song:hover,.song:focus-visible{background:rgba(240,207,134,.18);transform:translateY(-2px);outline:none}
+.song .ico{flex:none;width:42px;height:42px;border-radius:50%;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-size:1rem}
+.song b{display:block;font-weight:600}
+.song small{color:#b9c5e0}
+.skip{background:none;border:none;color:var(--gold-2);cursor:pointer;font:inherit;font-size:.9rem;text-decoration:underline;text-underline-offset:4px}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;color:#fff;overflow:hidden;padding:5.5rem 0 0;
+  background:linear-gradient(170deg,var(--navy) 0%,var(--navy-2) 60%,var(--navy-3) 100%)}
+.hero::before{content:"";position:absolute;inset:0;opacity:.14;
+  background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px),
+  linear-gradient(rgba(255,255,255,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.35) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center;padding-bottom:7rem}
+.eyebrow{display:inline-block;letter-spacing:.28em;text-transform:uppercase;font-size:.75rem;color:var(--gold-2);border:1px solid rgba(240,207,134,.5);padding:.4rem 1rem;border-radius:99px;margin-bottom:1.4rem}
+.hero h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:700}
+.hero h1 span{color:var(--gold);font-style:italic}
+.hero .sub{font-family:'Dancing Script',cursive;font-size:clamp(1.8rem,4.5vw,2.8rem);color:var(--gold-2);margin:.6rem 0 1.2rem}
+.hero .lead{max-width:30rem;color:#d6def0;font-weight:300}
+.cta{margin-top:2rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.btn{font:inherit;font-weight:600;cursor:pointer;border:none;border-radius:99px;padding:.95rem 2rem;font-size:1rem;transition:.25s;text-decoration:none;display:inline-block}
+.btn-gold{background:linear-gradient(135deg,var(--gold-2),var(--gold));color:var(--navy);box-shadow:0 8px 24px rgba(212,166,74,.4)}
+.btn-gold:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 12px 30px rgba(212,166,74,.55)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+
+.photo-frame{position:relative;justify-self:center;width:min(380px,100%)}
+.photo-frame::before{content:"";position:absolute;inset:-14px;border:2px solid var(--gold);border-radius:200px 200px 22px 22px;transform:rotate(3deg);opacity:.7}
+.photo-frame .arch{position:relative;border-radius:200px 200px 18px 18px;overflow:hidden;border:6px solid var(--gold);box-shadow:0 30px 60px rgba(0,0,0,.45);aspect-ratio:3/4.3;background:var(--navy-2)}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.badge{position:absolute;right:-18px;bottom:28px;background:#fff;color:var(--navy);border-radius:50%;width:104px;height:104px;display:grid;place-items:center;text-align:center;
+  font-family:'Playfair Display',serif;font-weight:700;font-size:.8rem;line-height:1.15;box-shadow:0 10px 25px rgba(0,0,0,.35);border:3px dashed var(--gold);animation:float 4s ease-in-out infinite}
+.badge b{display:block;font-size:1.6rem;color:var(--gold)}
+@keyframes float{50%{transform:translateY(-8px) rotate(4deg)}}
+
+.skyline{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:auto;display:block}
+
+/* ---------- Message ---------- */
+section{padding:5rem 0}
+.sec-title{text-align:center;margin-bottom:3rem}
+.sec-title small{display:block;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;font-size:.75rem;margin-bottom:.6rem}
+.sec-title h2{font-size:clamp(2rem,4.5vw,3rem);color:var(--navy)}
+.divider{width:90px;height:3px;margin:1rem auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.letter{max-width:760px;margin:auto;background:#fff;border-radius:20px;padding:clamp(1.8rem,5vw,3.5rem);box-shadow:0 20px 50px rgba(11,31,63,.1);position:relative;border-top:6px solid var(--gold)}
+.letter::after{content:"“";position:absolute;top:-.1em;right:.3em;font-family:'Playfair Display',serif;font-size:9rem;color:var(--gold);opacity:.18;line-height:1}
+.letter p{margin-bottom:1.1rem;font-size:1.05rem}
+.letter .sign{font-family:'Dancing Script',cursive;font-size:2rem;color:var(--navy);margin:1.5rem 0 0}
+
+/* ---------- Pillars ---------- */
+.pillars{background:var(--navy);color:#fff;position:relative}
+.pillars::before{content:"";position:absolute;inset:0;opacity:.08;background-image:linear-gradient(rgba(255,255,255,1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,1) 1px,transparent 1px);background-size:36px 36px}
+.pillars .sec-title h2{color:#fff}
+.cards{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem}
+.card{background:rgba(255,255,255,.06);border:1px solid rgba(240,207,134,.3);border-radius:18px;padding:2rem 1.6rem;text-align:center;transition:.3s}
+.card:hover{transform:translateY(-6px);background:rgba(240,207,134,.12)}
+.card svg{width:54px;height:54px;color:var(--gold);margin-bottom:1rem}
+.card h3{font-size:1.4rem;margin-bottom:.5rem;color:var(--gold-2)}
+.card p{color:#cdd6ec;font-size:.95rem}
+
+/* ---------- Gallery ---------- */
+.gallery{columns:3 250px;column-gap:1rem}
+.gallery figure{break-inside:avoid;margin-bottom:1rem;border-radius:16px;overflow:hidden;position:relative;cursor:zoom-in;box-shadow:0 10px 26px rgba(11,31,63,.18);border:4px solid #fff;background:#fff}
+.gallery img{width:100%;transition:transform .6s}
+.gallery figure:hover img{transform:scale(1.05)}
+#lightbox{position:fixed;inset:0;z-index:90;background:rgba(6,15,32,.94);display:none;place-items:center;padding:1rem;cursor:zoom-out}
+#lightbox.open{display:grid}
+#lightbox img{max-height:92vh;max-width:94vw;border-radius:12px;border:4px solid var(--gold)}
+
+/* ---------- Celebrate ---------- */
+.celebrate{background:linear-gradient(180deg,var(--cream),#f3ead3);text-align:center}
+#reveal{max-width:700px;margin:2rem auto 0;background:var(--navy);color:#fff;border-radius:22px;padding:0 2rem;max-height:0;opacity:0;overflow:hidden;transition:max-height .9s ease,opacity .9s,padding .6s;border:2px solid var(--gold)}
+#reveal.open{max-height:700px;opacity:1;padding:2.2rem 2rem}
+#reveal h3{color:var(--gold-2);font-size:1.8rem;margin-bottom:.8rem}
+#reveal p{color:#dbe3f5}
+
+footer{background:var(--navy);color:#c9d3ea;text-align:center;padding:3rem 1rem 6rem;font-size:.9rem}
+footer .big{font-family:'Dancing Script',cursive;font-size:2rem;color:var(--gold-2)}
+
+/* ---------- Mini player ---------- */
+#player{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:60;display:flex;align-items:center;gap:.5rem;
+  background:rgba(11,31,63,.92);backdrop-filter:blur(8px);border:1px solid var(--gold);color:#fff;border-radius:99px;padding:.45rem .6rem .45rem 1rem;box-shadow:0 10px 30px rgba(0,0,0,.35);max-width:94vw}
+#player .now{font-size:.8rem;max-width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#player button{width:36px;height:36px;border-radius:50%;border:none;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;font-size:.85rem}
+#player button.main{background:var(--gold);color:var(--navy)}
+#player button:hover{filter:brightness(1.2)}
+#player input{width:70px;accent-color:var(--gold)}
+.eq{display:flex;gap:2px;align-items:flex-end;height:16px}
+.eq i{width:3px;background:var(--gold);height:30%;border-radius:2px}
+.playing .eq i{animation:eq 1s infinite ease-in-out}
+.playing .eq i:nth-child(2){animation-delay:.2s}.playing .eq i:nth-child(3){animation-delay:.4s}
+@keyframes eq{50%{height:100%}}
+
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:80}
+
+.reveal-up{opacity:0;transform:translateY(30px);transition:1s}
+.reveal-up.in{opacity:1;transform:none}
+
+@media(max-width:820px){
+  .hero{padding-top:3.5rem}
+  .hero-grid{grid-template-columns:1fr;text-align:center;gap:3rem;padding-bottom:5rem}
+  .hero .lead{margin-inline:auto}.cta{justify-content:center}
+  .badge{right:-6px;width:90px;height:90px}
+  #player input{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- Song picker -->
+<div id="intro">
+  <div class="intro-card">
+    <svg class="cap" viewBox="0 0 64 64" fill="currentColor"><path d="M32 10 2 24l30 14 24-11.2V42h4V24L32 10Z"/><path d="M14 36v10c0 4 8 8 18 8s18-4 18-8V36L32 45 14 36Z" opacity=".85"/></svg>
+    <h2>Hilda, pick your song</h2>
+    <p>A little soundtrack for your big day. You can change it anytime from the player below.</p>
+    <div class="songs">
+      <button class="song" data-i="0"><span class="ico">▶</span><span><b>God Did</b><small>DJ Khaled</small></span></button>
+      <button class="song" data-i="1"><span class="ico">▶</span><span><b>Good Morning</b><small>Your morning-of-the-rest-of-your-life song</small></span></button>
+      <button class="song" data-i="2"><span class="ico">▶</span><span><b>Said</b><small>Runtown ft. Nasty C</small></span></button>
+    </div>
+    <button class="skip" id="skip">Enter without music</button>
+  </div>
+</div>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal-up">
+      <span class="eyebrow">Class of 2026 · B.Eng Civil Engineering</span>
+      <h1>Congratulations, <span>Hilda!</span></h1>
+      <p class="sub">You did it, Civil Engineer!</p>
+      <p class="lead">Every plan you drew, every late night, every exam you conquered, you laid it all as a foundation. Today, we celebrate the woman who built her dream, one steady step at a time.</p>
+      <div class="cta">
+        <button class="btn btn-gold" id="celebrateTop">Celebrate Hilda 🎉</button>
+        <a class="btn btn-ghost" href="#gallery">See the photos</a>
+      </div>
+    </div>
+    <div class="photo-frame reveal-up">
+      <div class="arch"><img src="images/photo2.jpg" alt="Hilda in her graduation gown and cap"></div>
+      <div class="badge"><span>Civil<b>2026</b>Engineer</span></div>
+    </div>
+  </div>
+  <!-- Bridge + skyline -->
+  <svg class="skyline" viewBox="0 0 1440 170" preserveAspectRatio="none" aria-hidden="true">
+    <g fill="none" stroke="#d4a64a" stroke-width="2" opacity=".55">
+      <path d="M0 120 Q360 20 720 120 T1440 120"/>
+      <path d="M120 112V150M240 90V150M360 76V150M480 80V150M600 98V150M720 120V150M840 98V150M960 80V150M1080 76V150M1200 90V150M1320 112V150" stroke-width="1.5"/>
+      <path d="M0 150H1440" stroke-width="3"/>
+    </g>
+    <path fill="#fbf8f1" d="M0 170V138h60v-24h34v24h40v-46h38v46h46v-30h30v30h70v-58h44v58h60v-20h34v20h80v-40h40v40h60v-26h36v26h70v-62h40v62h70v-30h34v30h80v-44h40v44h60v-22h34v22h70v-52h42v52h60v-26h34v26h80v-36h38v36h50v-20h34v20h70v170Z"/>
+  </svg>
+</header>
+
+<!-- Message -->
+<section id="message">
+  <div class="wrap">
+    <div class="sec-title reveal-up"><small>A note from the heart</small><h2>Built to Last</h2><div class="divider"></div></div>
+    <article class="letter reveal-up">
+      <p>Dear Hilda,</p>
+      <p>Look at you. The girl who set out to build the world has become the Engineer who will. We’ve watched your hard work, your determination, and the quiet strength you showed on the days when everything felt heavy. You never gave up, and today the whole world gets to see it.</p>
+      <p>A degree in civil engineering isn’t just a certificate. It’s years of calculations, sleepless nights, site visits, group projects, and fighting to believe in yourself. You did all of it with grace, and with a smile that lights up every room. We are so, so proud of you.</p>
+      <p>As you step into your career, may every road you design lead somewhere beautiful, every bridge you build connect hearts as well as places, and every structure stand tall, just like you. May doors open before you, may you always know your worth, and may your future be as bright as you are.</p>
+      <p>Go build something amazing. The skyline is waiting for you.</p>
+      <p class="sign">With all our love &amp; pride ♥</p>
+    </article>
+  </div>
+</section>
+
+<!-- Pillars -->
+<section class="pillars">
+  <div class="wrap">
+    <div class="sec-title reveal-up"><small>The blueprint of Hilda</small><h2>What You Built Her On</h2><div class="divider"></div></div>
+    <div class="cards">
+      <div class="card reveal-up">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 52h48M14 52V30h36v22M10 30l22-16 22 16M26 52V40h12v12"/></svg>
+        <h3>Foundation</h3><p>Years of hard work, early mornings and late nights, poured like concrete into something unshakable.</p></div>
+      <div class="card reveal-up">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 44h56M10 44V28M54 44V28M10 28Q32 6 54 28M20 44V21M32 44V15M44 44V21"/></svg>
+        <h3>Connection</h3><p>You build bridges between people, between places, and between the dreams of today and tomorrow.</p></div>
+      <div class="card reveal-up">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 6v52M12 58h40M20 58V34h24v24M26 22l6-8 6 8M24 44h16"/></svg>
+        <h3>Strength</h3><p>Determination that held steady under pressure. That’s how great structures, and great women, are made.</p></div>
+      <div class="card reveal-up">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M32 8 4 22l28 14 28-14L32 8ZM16 32v12c0 4 7 8 16 8s16-4 16-8V32M60 22v16"/></svg>
+        <h3>Vision</h3><p>A bright future, drawn in gold. You’ve earned every line of it, and the best is still to come.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-title reveal-up"><small>Her moment</small><h2>Graduation Gallery</h2><div class="divider"></div></div>
+    <div class="gallery">
+      <figure><img loading="lazy" src="images/photo1.jpg" alt="Hilda in her 2026 graduation stole"></figure>
+      <figure><img loading="lazy" src="images/photo3.jpg" alt="Hilda seated by the tree, wearing her graduation sash"></figure>
+      <figure><img loading="lazy" src="images/photo5.jpg" alt="Portrait of Hilda in a camel blazer"></figure>
+      <figure><img loading="lazy" src="images/photo4.jpg" alt="Hilda relaxing on a chair"></figure>
+      <figure><img loading="lazy" src="images/photo7.jpg" alt="Hilda standing by the bar stools"></figure>
+      <figure><img loading="lazy" src="images/photo6.jpg" alt="Hilda resting her head on her hand"></figure>
+      <figure><img loading="lazy" src="images/photo2.jpg" alt="Hilda in cap and gown"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Celebrate -->
+<section class="celebrate">
+  <div class="wrap">
+    <div class="sec-title reveal-up"><small>One more thing…</small><h2>Ready to Celebrate?</h2><div class="divider"></div></div>
+    <button class="btn btn-gold" id="celebrate" style="font-size:1.15rem;padding:1.1rem 2.6rem">Celebrate Hilda 🎓</button>
+    <div id="reveal" role="status" aria-live="polite">
+      <h3>Engineer Hilda, you’re officially unstoppable! 🏗️✨</h3>
+      <p>Take a deep breath and soak this in. You earned every bit of it. Today we’re clapping the loudest, and tomorrow the world will need your brilliance. Thank you for showing us what faith, focus and courage can build. Congratulations, our Civil Engineer. We can’t wait to see which skylines you’ll shape!</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="big">Hilda, Civil Engineer</div>
+  <p>Class of 2026 · Built with love for a woman who builds the future</p>
+</footer>
+
+<!-- Mini player -->
+<div id="player" aria-label="Music player">
+  <div class="eq"><i></i><i></i><i></i></div>
+  <span class="now" id="now">Pick a song</span>
+  <button id="prev" aria-label="Previous song">⏮</button>
+  <button class="main" id="pp" aria-label="Play or pause">▶</button>
+  <button id="next" aria-label="Next song">⏭</button>
+  <input id="vol" type="range" min="0" max="1" step=".05" value=".7" aria-label="Volume">
+</div>
+
+<div id="lightbox"><img alt=""></div>
+<canvas id="confetti"></canvas>
+
+<script>
+/* ---------- Music ---------- */
+const songs=[
+  {t:"God Did · DJ Khaled",src:"audio/god-did.mp3"},
+  {t:"Good Morning",src:"audio/good-morning.mp3"},
+  {t:"Said · Runtown ft. Nasty C",src:"audio/said.mp3"}
+];
+const audio=new Audio(); audio.volume=.7; let cur=-1;
+const $=s=>document.querySelector(s), player=$('#player'), pp=$('#pp');
+function load(i){cur=(i+songs.length)%songs.length;audio.src=songs[cur].src;$('#now').textContent=songs[cur].t;}
+function play(i){ if(i!==undefined&&i!==cur) load(i); if(cur<0) load(0); audio.play().catch(()=>{}); }
+audio.addEventListener('play',()=>{pp.textContent='❚❚';player.classList.add('playing')});
+audio.addEventListener('pause',()=>{pp.textContent='▶';player.classList.remove('playing')});
+audio.addEventListener('ended',()=>play(cur+1));
+pp.onclick=()=>audio.paused?play():audio.pause();
+$('#next').onclick=()=>play(cur+1); $('#prev').onclick=()=>play(cur-1);
+$('#vol').oninput=e=>audio.volume=e.target.value;
+function enter(){ $('#intro').classList.add('hide'); setTimeout(()=>{burst(90);},500); }
+document.querySelectorAll('.song').forEach(b=>b.onclick=()=>{play(+b.dataset.i);enter();});
+$('#skip').onclick=()=>{load(0);enter();};
+
+/* ---------- Confetti ---------- */
+const cv=$('#confetti'),cx=cv.getContext('2d');let parts=[],raf;
+function size(){cv.width=innerWidth;cv.height=innerHeight}size();addEventListener('resize',size);
+const cols=['#d4a64a','#f0cf86','#ffffff','#1b3b72','#f6e7bd'];
+function burst(n=80){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  for(let i=0;i<n;i++)parts.push({x:innerWidth/2+(Math.random()-.5)*200,y:innerHeight*.45,
+    vx:(Math.random()-.5)*14,vy:-Math.random()*14-4,w:6+Math.random()*7,h:4+Math.random()*6,
+    r:Math.random()*6,vr:(Math.random()-.5)*.4,c:cols[Math.random()*cols.length|0],life:0});
+  if(!raf)loop();
+}
+function loop(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  parts=parts.filter(p=>p.y<cv.height+20&&p.life<260);
+  parts.forEach(p=>{p.vy+=.28;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.life++;
+    cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.globalAlpha=Math.max(0,1-p.life/260);cx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx.restore();});
+  raf=parts.length?requestAnimationFrame(loop):null;
+}
+
+/* ---------- Celebrate ---------- */
+const rev=$('#reveal');
+function celebrate(){burst(160);setTimeout(()=>burst(90),350);rev.classList.add('open');
+  if(event&&event.currentTarget.id==='celebrateTop')setTimeout(()=>$('#celebrate').scrollIntoView({behavior:'smooth',block:'center'}),150);}
+$('#celebrate').onclick=celebrate; $('#celebrateTop').onclick=celebrate;
+
+/* ---------- Lightbox ---------- */
+const lb=$('#lightbox');
+document.querySelectorAll('.gallery img').forEach(im=>im.onclick=()=>{lb.querySelector('img').src=im.src;lb.classList.add('open')});
+lb.onclick=()=>lb.classList.remove('open');
+addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});
+
+/* ---------- Scroll reveal ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal-up').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
